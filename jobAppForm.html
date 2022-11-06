@@ -1,0 +1,704 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="./CSS/masterForm.css">
+
+    <script src="https://kit.fontawesome.com/97a0b6d6c9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <div style="width: 100%; background-color: white;">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <nav class="navbar bg-light navbar-expand-lg">
+                <!-- <nav class="navbar bg-light navbar-expand-lg"> -->
+                <div class="container-fluid">
+                    <img src="./ahex.png" alt="ahex logo" class="ahexlogo">
+
+                    <button class=" navbar-toggler bg-light dropdown-toggle" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#menu">
+                        <span class="navbar-toggler-icon navbar-brand"> </span>
+                    </button>
+                    <div id="menu" class="navbar-collapse collapse">
+                        <ul class="nav ms-auto mt-auto">
+                            <li class="nav-item"> <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                    aria-selected="true" style="font-size: 38px;">Home</button></li>
+                            <li class="nav-item"><button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                    aria-selected="false" style="font-size: 38px;">Registration</button>
+                            </li>
+                            <li class="nav-item"> <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                    aria-selected="false" style="font-size: 38px;"> <span onclick="regis_data()">
+                                        Registered Data </span> </button>
+
+                            </li>
+                            <li class="nav-item dropdown"> <i href="" class="nav-link dropdown-toggle"
+                                    data-bs-toggle="dropdown" style="font-size: 38px;"> Technoloigies </i>
+                                <ul class="dropdown-menu">
+                                    <li><a href="" class="dropdown-item"> Frontend </a></li>
+                                    <li><a href="" class="dropdown-item"> Backend </a></li>
+                                    <li><a href="" class="dropdown-item"> FullStack </a></li>
+                                    <li><a href="" class="dropdown-item"> Marketing </a></li>
+                                    <li><a href="" class="dropdown-item"> Business analysis </a></li>
+                                </ul>
+                            </li>
+                            <!-- <li class="nav-item"> <a href="" class="nav-link" style="font-size: 38px;">Contact us </a></li> -->
+                        </ul>
+                    </div>
+
+            </nav>
+        </div>
+    </div>
+
+
+    <!-- master div start -->
+    <div class="tab-content" id="nav-tabContent">
+
+        <!-- 1st div home start -->
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+            <h3>mahesh001</h3>
+
+            <div class="forInfo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h2>ABOUT US</h2>
+                            <p> <b>Turning client ideas into scalable solutions</b> </p>
+                            Founded in September <i>2009</i>, <q> Ahex Technologies is a leading Information Technology,
+                                Consulting,
+                                and Software Development Services company.</q> We are successfully combining established
+                            and
+                            emerging technologies to help our clients in building scalable software solutions that drive
+                            their business. We are known for a comprehensive portfolio of software development services
+                            across multiple domains with a strong emphasis on value creation for our clients. We have
+                            <i>80+</i>
+                            dedicated employees who are committed to providing high-quality software services in more
+                            than
+                            10 countries to our clients, ranging from large-scale manufacturers to individual
+                            entrepreneurs.
+                            <div class="happyClients">
+                                <p> 109+
+                                    Happy Clients</p>
+                                <p>150+
+                                    Project Delivered</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h2>Commitment</h2>
+                            <p>At Ahex, we are committed to your project. We don't see ourselves as vendors but as
+                                partners
+                                in your journey. We share our experience with you and try to fill and enhance your
+                                requirements. We believe strongly that our success is linked to yours. This belief of
+                                ours
+                                guides us in giving the best product development services and support once we deliver.
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h2>Transparency</h2>
+                            At Ahex, we believe that the only person who knows the project best is you. We simplify the
+                            processes to include "you" at all the stages of the development so that you know what is
+                            happening and get what you wanted.
+                            <br>
+                            <p>
+                            <h2>Flexibility</h2>
+                            We know that your idea will evolve with time as the development progresses. With Ahex, you
+                            are
+                            always sure that your well-thought changes will be included in the development cycles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="text-center h1 ">Our Services</h2>
+
+            <!-- // caroucell START -->
+
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7"></button>
+               
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="./web-development.jpg" class="d-block w-75 carouselimg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Web Development</h3>
+                        <b>Whether you want to build the next big idea or map the existing business process, our team
+                            creates web
+                            applications that perfectly match your end goals.</b>
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./Mobile_dev.png" class="d-block w-75 carouselimg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Mobile Apps Dev</h3>
+                        <b>We add mobility to your existing business solutions and extend your web business to mobile.</b>
+                        </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./Devops.png" class="d-block w-75 carouselimg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Devops Consulting</h3>
+                        <b>We provide consultation and implementation of the processes to increase the velocity of the
+                            delivery
+                            of products from release to maintenance cycle.</b>                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./entryPortals.jpeg" class="d-block w-75 carouselimg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Enterprises Portals</h3>
+                        <b> We integrate information, people, and processes across organizational boundaries to create
+                            portals
+                            that match your business goals and grow as your business grows.</b>                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./frontend.jpg" class="d-block w-75 carouselimg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Frontend Dev</h3>
+                        <b>At Ahex, we create frontends that complement your idea using the latest technology stacks to
+                            make
+                            them fast, reliable, and secure.</b>                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./UIUX-designing-1.jpg" class="d-block  w-75 carouselimg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>UI/UX</h3>
+                        <b>Our team focuses on making the user interaction as simple and efficient as possible so that
+                            your
+                            application is easy to use for your end-users.</b>                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="./data-visual.jpeg" class="d-block  w-75 carouselimg" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Data Visualization</h3>
+                        <b>We create data visualizations that will help you uncover trends, gain insights and get
+                            meaningful
+                            information out of your business data.</b>                    </div>
+                  </div>
+                  
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+
+            <!-- Caroucel END -->
+        </div>
+        <!-- // end of home div -->
+
+        <!-- // start of form div  -->
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <h3> mahesh002 </h3>
+
+            <div class="container-fluid">
+                <div class="forform">
+                    <form class="formcontent" method="post" id="userForm">
+                        <h2>Job Application Form</h2><br>
+                        <div class="form-group">
+                            <label>First Name :</label>
+                            <input type="text" class="form-control w-50 " style="font-size: 25px;"
+                                placeholder="Enter your first name" id="userFname" value="Mahesh">
+                            <span id="firstName" class="text-danger fw-bold"> </span>
+                        </div><br>
+                        <div class="form-group">
+                            <label>Last Name :</label>
+                            <input type="text" class="form-control w-50 " style="font-size: 25px;"
+                                placeholder="Enter your last name" id="userLname" value="Badanakurthi">
+                            <span id="lastName" class="text-danger fw-bold"> </span>
+
+                        </div><br>
+                        <div class="form-group">
+                            <label for="gender">Gender :</label>
+                            <div class="forradio">
+                                <div class="form-check ">
+                                    <input type="radio" class="form-check-input" name="gender"  mahi="gender" value="Male" id="form_gender">
+                                    <span class="form-check-label" for="male">Male</span>
+                                </div>
+                                <div class="form-check ">
+                                    <input type="radio" class="form-check-input" name="gender" mahi="gender" value="Female" id="form_gender">
+                                    <span class="form-check-label" for="female">Female</span>
+                                    <!-- //for validation of gender -->
+                                    <span id="forGender" class="text-danger fw-bold"> </span>
+
+                                </div>
+                            </div><br>
+                            <div class="form-group">
+                                <label>Location :</label>
+                                <input type="text" class="form-control w-50 " style="font-size: 25px;"
+                                    placeholder="Enter your name" id="userLocation" value="Hyderabad">
+                                <span id="forLocation" class="text-danger fw-bold"> </span>
+
+                            </div><br>
+                            <div class="form-group">
+                                <label>Qualification :</label>
+                                <select id="userQualif">
+                                    <option>Select</option>
+                                    <option value="Dgree" name="qual"> Degree </option>
+                                    <option value="B.tech" name="qual"> B.tech </option>
+                                    <option value="MCA" name="qual" selected> MCA </option>
+                                    <option value="Other" name="qual"> Other </option>
+                                </select>
+                                <span id="forQuali" class="text-danger fw-bold"> </span>
+
+                            </div><br>
+                            <div class="form-group">
+                                <label>Specify if Other :</label>
+                                <input type="text" class="form-control w-50 " style="font-size: 25px;"
+                                    placeholder="Enter your first name" id="if_other_qualif" value="No other">
+                            </div><br>
+                            <div class="form-group">
+                                <label>Year of Pass : </label>
+                                <select id="year_of_pass">
+                                    <option>Select</option>
+                                    <option value="2017"> 2017 </option>
+                                    <option value="2018"> 2018 </option>
+                                    <option value="2019"> 2019 </option>
+                                    <option value="2020"> 2020 </option>
+                                    <option value="2021" selected> 2021 </option>
+                                    <option value="2022"> 2022 </option>
+                                    <option value="2023"> 2023 </option>
+                                </select>
+                                <span id="forYOP" class="text-danger fw-bold"> </span>
+
+                            </div><br>
+                            <div class="form-group">
+                                <label for="Technical Skills">Technical Skills</label>
+                                <div class="form-check forradio">
+                                    <input type="checkbox" class="form-check-input" name="userTechskil" value="HTML CSS"  > <span>HTML CSS</span><br>
+                                    <input type="checkbox" class="form-check-input" name="userTechskil"
+                                        value="Java Script"  >
+                                    <span>JavaScript</lspan><br>
+                                        <input type="checkbox" class="form-check-input" name="userTechskil"
+                                            value="React js" >
+                                        <span>ReactJS</span><br>
+                                        <input type="checkbox" class="form-check-input" name="userTechskil"
+                                            value=". net" >
+                                        <span>.Net</span><br>
+                                        <input type="checkbox" class="form-check-input" name="userTechskil"
+                                            value="java coreJava"   >
+                                        <span>Java/coreJava</span><br>
+                                        <input type="checkbox" class="form-check-input" name="userTechskil"
+                                            value="c /c++">
+                                        <span>C /C++</span><br>
+                                </div>
+                            </div><br>
+                            <div class="form-group">
+                                <label>Mention Other skills</label>
+                                <textarea name="" id="other_skil" cols="" rows="" class="form-control w-50"></textarea>
+                            </div><br>
+                            
+                                <div class="form-group">
+                                    <label>Experience years</label>
+                                    <input type="number" name="experience" class="form-control w-50" id="exp_years"
+                                        value="1">
+                                </div><br>
+                                <div class="form-group">
+                                    <label>Email ID :</label>
+                                    <input type="email" class="form-control w-50" id="userMail" value="mahi@gmail.com">
+                                    <span id="forEmail" class="text-danger fw-bold"> </span>
+
+                                </div><br>
+                                <div class="form-group">
+                                    <label>Mobile No :</label>
+                                    <input type="number" class="form-control w-50" id="userMobile" autocomplete="off"
+                                        value="8887554332">
+                                    <span id="forMobile" class="text-danger fw-bold"> </span>
+
+                                </div><br>
+                                <div class="form-group">
+                                    <label>Upload Resume</label>
+                                    <input name="userfile" type="file"
+                                        accept="application/pdf, application/vnd.ms-excel" class="form-control w-50"
+                                        id="userResume">
+                                    <span id="forResume" class="text-danger fw-bold"> </span>
+
+                                </div><br>
+                                <div class="form-group">
+                                    <button class="btn btn-secondary btn-md " type="reset"> <i
+                                            class="bi bi-x-circle"></i> Clear
+                                    </button>
+                                    <button type="submit" class="btn btn-primary btn-md "> <i class="bi bi-send"></i>
+                                        Register</button>
+                                </div>
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div style="overflow-x:auto; display: none;">
+                <table id="toTable">
+                    <thead>
+                        <th>fName </th>
+                        <th> lName </th>
+                        <th> Gender </th>
+                        <th> Location </th>
+                        <th> Qualification </th>
+                        <th> If Other </th>
+                        <th> Year of Pass </th>
+                        <th> Tech Skills </th>
+                        <th> Other tech </th>
+                        <th> Exeperience </th>
+                        <th> Email </th>
+                        <th> mobile </th>
+                        <th> Resume </th>
+                        <th> for Delete </th>
+                        <th> </th>
+                        <th> </th>
+                    </thead>
+
+                </table>
+            </div>
+
+
+            <!-- Modal box -->
+            <!-- <div class="active" id="forActive"> -->
+            <div class="modal  " tabindex="-1" id="modal_popup">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Your details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container ">
+                                <div class="forform">
+                                    <form class="formcontent" id="forModalPopup">
+                                        <h2>Edit and Save changes</h2><br>
+                                        <div class="form-group">
+                                            <label>First Name :</label>
+                                            <input type="text" class="form-control w-100 " style="font-size: 25px;"
+                                                placeholder="Enter your first name" id="tofname">
+
+                                        </div><br>
+                                        <div class="form-group">
+                                            <label>Last Name :</label>
+                                            <input type="text" class="form-control w-100 " style="font-size: 25px;"
+                                                placeholder="Enter your last name" id="tolname">
+
+                                        </div><br>
+                                        <div class="form-group">
+                                            <label for="gender">Gender :</label>
+                                            <div class="forradio">
+                                                <div class="form-check ">
+                                                    <input type="radio" class="form-check-input" name="gender"  mahi="gender" value="Male">
+                                                    <span class="form-check-label" for="male">Male</span>
+                                                </div>
+                                                <div class="form-check ">
+                                                    <input type="radio" class="form-check-input" name="gender" mahi="gender" value="Female">
+                                                    <span class="form-check-label" for="female">Female</span>
+                                                    <!-- //for validation of gender -->
+                                                    <span id="forGender" class="text-danger fw-bold"> </span>
+                
+                                                </div>
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label>Location :</label>
+                                                <input type="text" class="form-control w-50 " style="font-size: 25px;"
+                                                    placeholder="Enter your Location" id="toloc">
+
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label>Qualification :</label>
+                                                <select class="w-100" id="forQuali">
+                                                    <option>Select</option>
+                                                    <option value="Dgree" name="qual"> Degree </option>
+                                                    <option value="B.tech" name="qual"> B.tech </option>
+                                                    <option value="MCA" name="qual"> MCA </option>
+                                                    <option value="Other" name="qual"> Other </option>
+                                                </select>
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label>Specify if Other :</label>
+                                                <input type="text" class="form-control w-50 " style="font-size: 25px;"
+                                                    placeholder="Enter your first name" id="toOQ">
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label>Year of Pass : </label>
+                                                <select class="w-100" id="yop">
+                                                    <option>Select</option>
+                                                    <option value="2017"> 2017 </option>
+                                                    <option value="2018"> 2018 </option>
+                                                    <option value="2019"> 2019 </option>
+                                                    <option value="2020"> 2020 </option>
+                                                    <option value="2021"> 2021 </option>
+                                                    <option value="2022"> 2022 </option>
+                                                    <option value="2023"> 2023 </option>
+                                                </select>
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label for="Technical Skills">Technical Skills</label>
+                                                <div class="form-check forradio">
+                                                    <input type="checkbox" class="form-check-input" name="modal_techSkil"
+                                                        value="HTML&CSS"> <span>HTML
+                                                        &CSS</span><br>
+                                                    <input type="checkbox" class="form-check-input" name="modal_techSkil"
+                                                        value="JavaScript">
+                                                    <span>JavaScript</lspan><br>
+                                                        <input type="checkbox" class="form-check-input"
+                                                            name="modal_techSkil" value="React js">
+                                                        <span>ReactJS</span><br>
+                                                        <input type="checkbox" class="form-check-input"
+                                                            name="modal_techSkil" value=".net">
+                                                        <span>.Net</span><br>
+                                                        <input type="checkbox" class="form-check-input"
+                                                            name="modal_techSkil" value="java">
+                                                        <span>Java</span><br>
+                                                        <input type="checkbox" class="form-check-input"
+                                                            name="modal_techSkil" value="c / c++ ">
+                                                        <span>C /C++</span><br>
+                                                </div>
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label>Mention Other skills</label>
+                                                <textarea class="form-control w-100" id="OTskil"></textarea>
+                                            </div><br>
+                                            
+                                            <div class="form-group">
+                                                <label>Experience years</label>
+                                                <input type="number" name="experience" class="form-control w-100"
+                                                    id="forexp">
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label>Email ID :</label>
+                                                <input type="email" class="form-control w-100" id="forMail">
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label>Mobile No :</label>
+                                                <input type="number" class="form-control w-100" autocomplete="off"
+                                                    id="forMobile">
+                                            </div><br>
+                                            <div class="form-group">
+                                                <label>Upload Resume</label>
+                                                <input name="userfile" type="file"
+                                                    accept="application/pdf, application/vnd.ms-excel"
+                                                    class="form-control w-100" id="forResume">
+                                            </div><br>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" onclick="toUpdating()">Update
+                                                Details</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <!-- // end of form div -->
+
+    <!-- start of reg data div -->
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        mahesh 003
+
+        <div style="overflow-x:auto;">
+            <table id="userTable">
+                <thead>
+                    <th>fName </th>
+                    <th> lName </th>
+                    <th> Gender </th>
+                    <th> Location </th>
+                    <th> Qualification </th>
+                    <th> If Other </th>
+                    <th> Year of Pass </th>
+                    <th> Tech Skills </th>
+                    <th> Other tech </th>
+                    <th> Exeperience </th>
+                    <th> Email </th>
+                    <th> mobile </th>
+                    <th> Resume </th>
+                    <th> for Delete </th>
+                    <th> </th>
+                    <th> </th>
+                </thead>
+            </table>
+        </div>
+
+
+        <!-- Modal Box -->
+        <div class="modal fade" id="exampleModal w-100" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"> For Edit Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="forform">
+                            <form class="formcontent" id="forModalPopup">
+                                <h2>Edit and Save changes</h2><br>
+                                <div class="form-group">
+                                    <label>First Name :</label>
+                                    <input type="text" class="form-control w-100 " style="font-size: 25px;"
+                                        placeholder="Enter your first name" id="modal_fname">
+
+                                </div><br>
+                                <div class="form-group">
+                                    <label>Last Name :</label>
+                                    <input type="text" class="form-control w-100 " style="font-size: 25px;"
+                                        placeholder="Enter your last name" id="modal_lname">
+
+                                </div><br>
+                                <div class="form-group">
+                                    <label for="gender">Gender :</label>
+                                    <div class="forradio">
+                                        <div class="form-check ">
+                                            <input type="radio" class="form-check-input" name="gender" mahi="modal_gender" value="Male" id="modal_gender_male">
+                                            <span class="form-check-label" for="male">Male</span>
+                                        </div>
+                                        <div class="form-check ">
+                                            <input type="radio" class="form-check-input" name="gender" mahi="modal_gender"
+                                                value="Female" id="modal_gender_female">
+                                            <span class="form-check-label" for="female">Female</span>
+                                            <span id="forGender" class="text-danger fw-bold"> </span>
+        
+                                        </div>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label>Location :</label>
+                                        <input type="text" class="form-control w-50 " style="font-size: 25px;"
+                                            placeholder="Enter your Location" id="modal_location">
+
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label>Qualification :</label>
+                                        <select class="w-100" id="modal_qualif">
+                                            <option>Select</option>
+                                            <option value="Dgree" name="qual"> Degree </option>
+                                            <option value="B.tech" name="qual"> B.tech </option>
+                                            <option value="MCA" name="qual"> MCA </option>
+                                            <option value="Other" name="qual"> Other </option>
+                                        </select>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label>Specify if Other :</label>
+                                        <input type="text" class="form-control w-50 " style="font-size: 25px;"
+                                            placeholder="Enter your first name" id="modal_OQualif">
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label>Year of Pass : </label>
+                                        <select class="w-100" id="modal_yop">
+                                            <option>Select</option>
+                                            <option value="2017"> 2017 </option>
+                                            <option value="2018"> 2018 </option>
+                                            <option value="2019"> 2019 </option>
+                                            <option value="2020"> 2020 </option>
+                                            <option value="2021"> 2021 </option>
+                                            <option value="2022"> 2022 </option>
+                                            <option value="2023"> 2023 </option>
+                                        </select>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label for="Technical Skills">Technical Skills</label>
+                                        <div class="form-check forradio">
+                                            <input type="checkbox" class="form-check-input" name="modal_techSkil"
+                                                value="HTML CSS" id="HTML_CSS"> <span>HTML CSS</span><br>
+                                            <input type="checkbox" class="form-check-input" name="modal_techSkil"
+                                                value="Java Script" id="Java_Script" >
+                                            <span>Java Script</lspan><br>
+                                                <input type="checkbox" class="form-check-input" name="modal_techSkil"
+                                                    value="React js" id="React_js">
+                                                <span>React js</span><br>
+                                                <input type="checkbox" class="form-check-input" name="modal_techSkil"
+                                                    value=". net" id="._net">
+                                                <span>.Net</span><br>
+                                                <input type="checkbox" class="form-check-input" name="modal_techSkil"
+                                                    value="java /coreJava" id="java_/coreJava" >
+                                                <span>Java/coreJava</span><br>
+                                                <input type="checkbox" class="form-check-input" name="modal_techSkil"
+                                                    value="c  /c++" id="c_/c++">
+                                                <span>C /C++</span><br>
+                                        </div>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label>Mention Other skills</label>
+                                        <textarea class="form-control w-100" id="modal_Oskills"></textarea>
+                                    </div><br>
+                                    
+                                    <div class="form-group">
+                                        <label>Experience years</label>
+                                        <input type="number" name="experience" class="form-control w-100" id="modal_exp">
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label>Email ID :</label>
+                                        <input type="email" class="form-control w-100" id="modal_mail">
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label>Mobile No :</label>
+                                        <input type="number" class="form-control w-100" autocomplete="off"
+                                            id="modal_mobile">
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label>Upload Resume</label>
+                                        <input name="userfile" type="file"
+                                            accept="application/pdf, application/vnd.ms-excel"
+                                            class="form-control w-100" id="modal_resume">
+                                    </div><br>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="toUpdating()">Update
+                                        Details</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end of bootstrap modal -->
+
+    </div>
+    <!-- // end of reg data div -->
+
+
+
+    </div>
+    <!-- //master div end -->
+
+    <header>
+        <svg>
+            <path id="blob1" />
+            <path id="blob2" style="visibility: hidden" />
+        </svg>
+
+    </header>
+
+
+
+    <script src="./JS/form.js"></script>
+</body>
+
+</html>
