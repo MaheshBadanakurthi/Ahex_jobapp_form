@@ -204,15 +204,15 @@ function editFun(td) {
   document.getElementById("modal_yop").value = row.cells[6].innerHTML;
   
 // for technical skills
-// console.log(row.cells[7].innerHTML);
-// let newTechArr=new Array(row.cells[7].innerHTML)
-// console.log(" tech array for modal ",newTechArr);
+console.log(row.cells[7].innerHTML);
+let newTechArr=(row.cells[7].innerHTML).split(",");
+console.log(" tech array for modal ",newTechArr);
 
-//   for (i = 0; i < newTechArr.length; i++) {
-//     let d = newTechArr[i].split(" ").join("_");
-//     console.log(d);
-//     document.getElementById(d).checked=true;
-//    }
+  for (i = 0; i < newTechArr.length; i++) {
+    let d = newTechArr[i].split(" ").join("_");
+    console.log(d);
+    document.getElementById(d).checked=true;
+   }
 
   //   document.getElementById("modal_Techskill").value=row.cells[7].innerHTML;
 
@@ -292,11 +292,5 @@ function toDel(forRowDel) {
 }
 
 
-//svg
-const tween = KUTE.fromTo(
-  '#blob1',
-  { path: '#blob1' },
-  { path: '#blob2' },
-  { repeat: 999, duration: 3000, yoyo: true }
-).start();
+
 
