@@ -1,7 +1,11 @@
 
 
 body{
-/* background-image: url(""); */
+background-image: url("./Bg1.jpg");
+background-repeat: no-repeat;
+
+background-attachment: fixed;  
+background-size:cover;
  }
 
 .forInfo{
@@ -13,13 +17,13 @@ body{
     font-weight: 600;
     margin-left: 4%;
 }
-/* p{ border-bottom: 3px solid black;  } */
 i{  color: red; font-size: 25px;  }
 h2{
-    color: rgb(0, 38, 255);
+    color: rgb(16, 8, 255);
     font-family: serif;
-    font-weight: 900;
-    text-shadow: 1px 2px rgb(10, 10, 10);
+    font-weight: 1000;
+    text-shadow: 2px 1px rgb(15, 3, 1);
+    border-bottom: 3px dotted black;
 }
 .happyClients{
     margin-top: 4%;
@@ -157,12 +161,73 @@ tr:nth-child(odd){
 .carouselimg{
    margin-left: 15%;
    border-radius: 5%;
+   height: 70%;
+   width: 75%;
 
 }
 
-header{
+footer{
+    height: 25%;
+    width: 100%;
+    background-color: rgb(221, 87, 10);
+    background-image: url("./footerbg.png");
+    background-repeat: no-repeat;
+    background-position: fixed;
+    background-size:cover;
+}
+
+.footerIconfb{
+    color: white;
+    font-size: 50px;
+    position: relative;
+    margin-left: 2%;
+    /* margin-top: 2%; */
+}
+
+.footerIcontw{
+    color: rgb(52, 52, 228);
+    font-size: 50px;
+    border: 2px solid white;
+    border-radius: 30px;
+    position: relative;
+    margin-left: 2%;
+    /* margin-top: 2%; */
+}
+.dot{
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: -23px;
     
 }
 
+.footerIconW{
+    color: rgb(240, 246, 239);
+    font-size: 50px;
+    border: 1px ridge white;
+    background-color: green;
+    border-radius: 56px 56px 56px 22px;
+    position: relative;
+    margin-left: 2%;
+    /* margin-top: 2%; */
+}
 
+.footerIconin{
+    color: rgb(251, 6, 243);
+    background-color: rgb(247, 242, 247);
+    font-size: 50px;
+    position: relative;
+    border-radius: 22px 22px 22px 22px;
+    margin-left: 2%;
+    /* margin-top: 2%; */
+}
+.footerHead{
+    margin-left: 45%;
+    font-size: 40px;
+    color: white;
+    font-family: serif;
+    font-weight: 800;
+    text-shadow: 2px 5px black;
+}
 
