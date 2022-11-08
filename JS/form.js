@@ -26,57 +26,54 @@ userForm_Submit.addEventListener("submit", function submitted(e) {
 
   // form Validation
 
-  // if(f_Name.value==="" || f_Name.value.length <= 2){
-  //     document.getElementById("firstName").innerHTML=`
-  //   ** First name can not be empty \n or less than 3 words`
-  //     return false;
-  // }
-  // if(!isNaN(f_Name.value)){
-  //     alert("Name can not starts with number");
-  // }
+  if(f_Name.value==="" || f_Name.value.length <= 2){
+      document.getElementById("firstName").innerHTML=`
+    ** First name can not be empty \n or less than 3 words`
+      return false;
+  }
+  if(!isNaN(f_Name.value)){
+      alert("Name can not starts with number");
+  }
 
-  // if(l_Name.value==="" || l_Name.value.length <= 2){
-  //     document.getElementById("lastName").innerHTML=`
-  //   ** Last name can not be empty \n or less than 3 words`
-  //     return false;
-  //  }
-  //  if(!isNaN(l_Name.value)){
-  //     alert("Last Name can not starts with number");
-  // }
+  if(l_Name.value==="" || l_Name.value.length <= 2){
+      document.getElementById("lastName").innerHTML=`
+    ** Last name can not be empty \n or less than 3 words`
+      return false;
+   }
+   if(!isNaN(l_Name.value)){
+      alert("Last Name can not starts with number");
+  }
 
-  // let forGender=document.querySelector('input[mahi="gender"]:checked');
-  // if(!forGender){
-  //     document.getElementById("forGender").innerHTML=`
-  //      ** Please select Your Gender`;
-  //     return false;
-  // }
+  let forGender=document.querySelector('input[mahi="gender"]:checked');
+  if(!forGender){
+      document.getElementById("forGender").innerHTML=`
+       ** Please select Your Gender`;
+      return false;
+  }
 
-  //  if(Locat.value==="" || Locat.value.length <= 2){
-  //     document.getElementById("forLocation").innerHTML=`
-  //     ** Please Enter Your Location`;
-  //     return false;
-  //  }
-  //  if(!isNaN(Locat.value)){
-  //     alert("Location can not starts with number");
-  // }
-  //  let selQua=qualification.options[qualification.selectedIndex].value;
-  //  if(selQua=="Select"){
-  //     document.getElementById("forQuali").innerHTML=`
-  //     ** Please Select your qualification`;
-  //     return false;
-  //  }
+   if(Locat.value==="" || Locat.value.length <= 2){
+      document.getElementById("forLocation").innerHTML=`
+      ** Please Enter Your Location`;
+      return false;
+   }
+   if(!isNaN(Locat.value)){
+      alert("Location can not starts with number");
+  }
+   let selQua=qualification.options[qualification.selectedIndex].value;
+   if(selQua=="Select"){
+      document.getElementById("forQuali").innerHTML=`
+      ** Please Select your qualification`;
+      return false;
+   }
 
-  //  let YOP=passedout.options[passedout.selectedIndex].value;
-  //  if(YOP=="Select"){
-  //     document.getElementById("forYOP").innerHTML=`
-  //     ** Please year of pass`;
-  //     return false;
-  //  }
+   let YOP=passed_out.options[passed_out.selectedIndex].value;
+   if(YOP=="Select"){
+      document.getElementById("forYOP").innerHTML=`
+      ** Please year of pass`;
+      return false;
+   }
 
-  //  if(mail.value===""){
-  //     document.getElementById("forEmail").innerHTML=`
-  //     resumelert("mail can not starts with number");
-  // }
+  
   //  if( mobile.value===""){
   //     document.getElementById("forMobile").innerHTML=`
   //     ** Please enter your mobile number`;
@@ -92,11 +89,10 @@ userForm_Submit.addEventListener("submit", function submitted(e) {
   //     return false;
   //  }
 
-  // let gender=document.querySelector('input[mahi="gender"]:checked');
 
   localStoreFunction();
 
-  //   formSubmit.reset();
+  userForm_Submit.reset();
 });
 let userApply;
 
@@ -141,10 +137,10 @@ function regis_data() {
   for (let i = rowCount - 1; i > 0; i--) {
     document.getElementById("userTable").deleteRow(i);
   }
-
-  let result = JSON.parse(localStorage.getItem("form_details"));
+let lsRegis=localStorage.getItem("form_details")
+  let result = JSON.parse(lsRegis);
   // console.log(result[0].f_Name)
-  // console.log(result);
+  console.log(result);
 
   for (let i = 0; i < result.length; i++) {
     let forRow = regTable.insertRow();
@@ -184,46 +180,176 @@ function regis_data() {
 
 
 // edit functionality
+
+// let row;
+// function editFun(td) {
+//   console.log("edit function is working");
+//   row = td.parentNode.parentNode.rowIndex;
+//   console.log(row);
+//   document.getElementById("modal_fname").value = row.cells[0].innerHTML;
+//   document.getElementById("modal_lname").value = row.cells[1].innerHTML;
+//   if (row.cells[2].innerHTML == "Male") {
+//     document.getElementById("modal_gender_male").checked = true;
+//   } else {
+//     document.getElementById("modal_gender_female").checked = true;
+//   }
+//   document.getElementById("modal_location").value = row.cells[3].innerHTML;
+//   document.getElementById("modal_qualif").value = row.cells[4].innerHTML;
+//   document.getElementById("modal_OQualif").value = row.cells[5].innerHTML;
+//   document.getElementById("modal_yop").value = row.cells[6].innerHTML;
+
+// // for technical skills
+// // console.log(row.cells[7].innerHTML);
+// // let newTechArr=new Array(row.cells[7].innerHTML)
+// // console.log(" tech array for modal ",newTechArr);
+// console.log(row.cells[7].innerHTML);
+// let newTechArr=(row.cells[7].innerHTML).split(",");
+// console.log(" tech array for modal ",newTechArr);
+
+// //   for (i = 0; i < newTechArr.length; i++) {
+// //     let d = newTechArr[i].split(" ").join("_");
+// //     console.log(d);
+// //     document.getElementById(d).checked=true;
+// //    }
+//   for (i = 0; i < newTechArr.length; i++) {
+//     let d = newTechArr[i].split(" ").join("_");
+//     console.log(d);
+//     document.getElementById(d).checked=true;
+//    }
+
+//   //   document.getElementById("modal_Techskill").value=row.cells[7].innerHTML;
+
+//   document.getElementById("modal_Oskills").value = row.cells[8].innerHTML;
+//   document.getElementById("modal_exp").value = row.cells[9].innerHTML;
+//   document.getElementById("modal_mail").value = row.cells[10].innerHTML;
+//   document.getElementById("modal_mobile").value = row.cells[11].innerHTML;
+//   document.getElementById("modal_resume").value = row.cells[12].innerHTML;
+// }
+
+
+
+
+
+
 let row;
-function editFun(td) {
-  console.log("edit function is working");
-  row = td.parentNode.parentNode;
+ function editFun(td) {
+   console.log("edit function is working");
+   row = td.parentNode.parentNode;
+ console.log(row.rowIndex);
+ let lsGet=JSON.parse(localStorage.getItem("form_details"))
+ let a=row.rowIndex-1;
 
-  document.getElementById("modal_fname").value = row.cells[0].innerHTML;
-  document.getElementById("modal_lname").value = row.cells[1].innerHTML;
+   document.getElementById("modal_fname").value = lsGet[a].f_Name;
+   document.getElementById("modal_lname").value = lsGet[a].l_Name;
 
-  if (row.cells[2].innerHTML == "Male") {
-    document.getElementById("modal_gender_male").checked = true;
-  } else {
-    document.getElementById("modal_gender_female").checked = true;
-  }
-
-  document.getElementById("modal_location").value = row.cells[3].innerHTML;
-  document.getElementById("modal_qualif").value = row.cells[4].innerHTML;
-  document.getElementById("modal_OQualif").value = row.cells[5].innerHTML;
-  document.getElementById("modal_yop").value = row.cells[6].innerHTML;
-  
-// for technical skills
-console.log(row.cells[7].innerHTML);
-let newTechArr=(row.cells[7].innerHTML).split(",");
-console.log(" tech array for modal ",newTechArr);
-
-  for (i = 0; i < newTechArr.length; i++) {
-    let d = newTechArr[i].split(" ").join("_");
-    console.log(d);
-    document.getElementById(d).checked=true;
+   if ( lsGet[a].gender== "Male") {
+     document.getElementById("modal_gender_male").checked = true;
+   } else {
+     document.getElementById("modal_gender_female").checked = true;
    }
 
-  //   document.getElementById("modal_Techskill").value=row.cells[7].innerHTML;
+   document.getElementById("modal_location").value =  lsGet[a].location;
+  document.getElementById("modal_qualif").value =  lsGet[a].qualification;
+  document.getElementById("modal_OQualif").value =  lsGet[a].other_Qual;
+   document.getElementById("modal_yop").value =  lsGet[a].passout;
+  
+ // for technical skills
+ console.log( lsGet[a].Techskil);
+ 
+  // document.querySelectorAll(".modal_checkbox_false").checked=false;
 
-  document.getElementById("modal_Oskills").value = row.cells[8].innerHTML;
-  document.getElementById("modal_exp").value = row.cells[9].innerHTML;
-  document.getElementById("modal_mail").value = row.cells[10].innerHTML;
-  document.getElementById("modal_mobile").value = row.cells[11].innerHTML;
-  document.getElementById("modal_resume").value = row.cells[12].innerHTML;
+  toArr=lsGet[a].Techskil.toString().split(",");
+//  console.log(toArr);
+//  console.log(typeof(toArr));
+// document.querySelector('input[mahi="gender"]:checked');
+// document.querySelectorAll("input[mahi="modal_checkbox_false"]").checked=false;
+
+
+  var inputs = document.getElementsByTagName('input');
+
+  for (var i=0; i<inputs.length; i++)  {
+    if (inputs[i].type == 'checkbox')   {
+      inputs[i].checked = false;
+    }
+  }
+
+  for (i = 0; i < toArr.length; i++) {
+    let d = toArr[i].split(" ").join("_");
+     console.log(d);
+     
+    document.getElementById(d).checked=true;
+    }
+
+   document.getElementById("modal_Oskills").value =  lsGet[a].Other_skill;
+   document.getElementById("modal_exp").value = lsGet[a].Exp;
+   document.getElementById("modal_mail").value =  lsGet[a].Email;
+   document.getElementById("modal_mobile").value =  lsGet[a].Mobile;
+   document.getElementById("modal_resume").value =  lsGet[a].resume;
+ }
+
+// // updating Functionality
+// function toUpdating() {
+//   console.log("update function working ");
+//   let lsforUpdate=JSON.parse(localStorage.getItem("form_details"));
+
+//   let modal_gender = document.querySelector('input[mahi="modal_gender"]:checked');
+
+
+//   let modal_techskill = [];
+//   let techSkills = document.getElementsByName("modal_techSkil");
+//   for (let i = 0; i < techSkills.length; i++) {
+//     if (techSkills[i].checked) {
+//       modal_techskill.push(techSkills[i].value);
+//     }
+//   }
+//   console.log(modal_techskill);
+//   let updateObj={
+//     f_Name: document.getElementById("modal_fname").value,
+//     l_Name: document.getElementById("modal_lname").value,
+//     gender: document.querySelector('input[mahi="modal_gender"]:checked').value,
+//     location: document.getElementById("modal_location").value,
+//     qualification:document.getElementById("modal_qualif").value,
+//     other_Qual:document.getElementById("modal_OQualif").value,
+//     passout:document.getElementById("modal_yop").value,
+//     Techskil:modal_techskill,
+//     Other_skill: document.getElementById("modal_Oskills").value,
+//     Exp:document.getElementById("modal_exp").value,
+//     Email:document.getElementById("modal_mail").value,
+//     Mobile: document.getElementById("modal_mobile").value,
+//     resume: document.getElementById("modal_resume").value,
+//   };
+//   console.log(lsforUpdate);
+// console.log("u clicked on ",row.rowIndex);
+//   lsforUpdate[row.rowIndex-1]=updateObj;
+//   console.log(lsforUpdate);
+//   // localStorage.setItem("form_details",JSON.stringify(lsforUpdate))
+//   // regis_data()
+
+ 
+//   // let ls = JSON.parse(localStorage.getItem("form_details"));
+//   // ls[row.rowIndex - 1] = modalFormDetails;
+//   // localStorage.setItem("form_details", JSON.stringify(ls));
+  
+// }
+
+function toDel(forRowDel) {
+  let ok = confirm("Are you sure to delete this row");
+  if (ok == true) {
+    var userIndex = forRowDel.closest('tr').rowIndex;
+    document.getElementById("userTable").deleteRow(userIndex);
+   
+    let lsget = localStorage.getItem("form_details");
+    let lsObj = JSON.parse(lsget); // converting into Object form
+    lsObj.splice(userIndex - 1, 1);
+
+    localStorage.setItem("form_details", JSON.stringify(lsObj));
+  }
 }
 
-// updating Functionality
+
+
+
+
 function toUpdating() {
   console.log("update function working ");
   let modal_gender = document.querySelector('input[mahi="modal_gender"]:checked');
@@ -237,6 +363,8 @@ function toUpdating() {
     }
   }
   console.log(modal_techskill);
+  let lsfor=JSON.parse(localStorage.getItem("form_details"));
+  
 
   row.cells[0].innerHTML = document.getElementById("modal_fname").value;
   row.cells[1].innerHTML = document.getElementById("modal_lname").value;
@@ -271,26 +399,6 @@ function toUpdating() {
   let ls = JSON.parse(localStorage.getItem("form_details"));
   ls[row.rowIndex - 1] = modalFormDetails;
   localStorage.setItem("form_details", JSON.stringify(ls));
+  
 }
-
-function toDel(forRowDel) {
-  let ok = confirm("Are you sure to delete this row");
-  if (ok == true) {
-    var userIndex = forRowDel.parentNode.parentNode.rowIndex;
-    // console.log(userIndex);
-    document.getElementById("userTable").deleteRow(userIndex);
-    //    localStorage.clear();
-    let lsget = localStorage.getItem("form_details");
-    // console.log(typeof a); // its a string
-    let lsObj = JSON.parse(lsget); // converting into Object form
-    // console.log(b);
-    let forObjDel = lsObj.splice(userIndex - 1, 1);
-    console.log(forObjDel);
-
-    localStorage.setItem("form_details", JSON.stringify(lsObj));
-  }
-}
-
-
-
 
