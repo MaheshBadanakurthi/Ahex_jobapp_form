@@ -74,20 +74,20 @@ userForm_Submit.addEventListener("submit", function submitted(e) {
    }
 
   
-  //  if( mobile.value===""){
-  //     document.getElementById("forMobile").innerHTML=`
-  //     ** Please enter your mobile number`;
-  //             return false;
-  //  }
-  //  if(mobile.value.length <10 || mobile.value.length > 10){
-  //     alert("Mobile number should contain 10 numbers");
-  //     return false;
-  //  }
-  //  if(resume.value===""){
-  //     document.getElementById("forResume").innerHTML=`
-  //     ** Please Select your resume`;
-  //     return false;
-  //  }
+   if( mobile.value===""){
+      document.getElementById("forMobile").innerHTML=`
+      ** Please enter your mobile number`;
+              return false;
+   }
+   if(mobile.value.length <10 || mobile.value.length > 10){
+      alert("Mobile number should contain 10 numbers");
+      return false;
+   }
+   if(resume.value===""){
+      document.getElementById("forResume").innerHTML=`
+      ** Please Select your resume`;
+      return false;
+   }
 
 
   localStoreFunction();
@@ -133,10 +133,12 @@ function regis_data() {
   console.log("Showing regis data");
 
   let regTable = document.getElementById("userTable");
+  // to clear the table every time you click on regis data.
   let rowCount = document.getElementById("userTable").rows.length;
   for (let i = rowCount - 1; i > 0; i--) {
     document.getElementById("userTable").deleteRow(i);
   }
+
 let lsRegis=localStorage.getItem("form_details")
   let result = JSON.parse(lsRegis);
   // console.log(result[0].f_Name)
@@ -178,160 +180,48 @@ let lsRegis=localStorage.getItem("form_details")
   }
 }
 
-
-// edit functionality
-
-// let row;
-// function editFun(td) {
-//   console.log("edit function is working");
-//   row = td.parentNode.parentNode.rowIndex;
-//   console.log(row);
-//   document.getElementById("modal_fname").value = row.cells[0].innerHTML;
-//   document.getElementById("modal_lname").value = row.cells[1].innerHTML;
-//   if (row.cells[2].innerHTML == "Male") {
-//     document.getElementById("modal_gender_male").checked = true;
-//   } else {
-//     document.getElementById("modal_gender_female").checked = true;
-//   }
-//   document.getElementById("modal_location").value = row.cells[3].innerHTML;
-//   document.getElementById("modal_qualif").value = row.cells[4].innerHTML;
-//   document.getElementById("modal_OQualif").value = row.cells[5].innerHTML;
-//   document.getElementById("modal_yop").value = row.cells[6].innerHTML;
-
-// // for technical skills
-// // console.log(row.cells[7].innerHTML);
-// // let newTechArr=new Array(row.cells[7].innerHTML)
-// // console.log(" tech array for modal ",newTechArr);
-// console.log(row.cells[7].innerHTML);
-// let newTechArr=(row.cells[7].innerHTML).split(",");
-// console.log(" tech array for modal ",newTechArr);
-
-// //   for (i = 0; i < newTechArr.length; i++) {
-// //     let d = newTechArr[i].split(" ").join("_");
-// //     console.log(d);
-// //     document.getElementById(d).checked=true;
-// //    }
-//   for (i = 0; i < newTechArr.length; i++) {
-//     let d = newTechArr[i].split(" ").join("_");
-//     console.log(d);
-//     document.getElementById(d).checked=true;
-//    }
-
-//   //   document.getElementById("modal_Techskill").value=row.cells[7].innerHTML;
-
-//   document.getElementById("modal_Oskills").value = row.cells[8].innerHTML;
-//   document.getElementById("modal_exp").value = row.cells[9].innerHTML;
-//   document.getElementById("modal_mail").value = row.cells[10].innerHTML;
-//   document.getElementById("modal_mobile").value = row.cells[11].innerHTML;
-//   document.getElementById("modal_resume").value = row.cells[12].innerHTML;
-// }
-
-
-
-
-
-
 let row;
  function editFun(td) {
    console.log("edit function is working");
    row = td.parentNode.parentNode;
- console.log(row.rowIndex);
+//  console.log(row.rowIndex);
  let lsGet=JSON.parse(localStorage.getItem("form_details"))
  let a=row.rowIndex-1;
-
    document.getElementById("modal_fname").value = lsGet[a].f_Name;
    document.getElementById("modal_lname").value = lsGet[a].l_Name;
-
    if ( lsGet[a].gender== "Male") {
      document.getElementById("modal_gender_male").checked = true;
    } else {
      document.getElementById("modal_gender_female").checked = true;
    }
-
    document.getElementById("modal_location").value =  lsGet[a].location;
   document.getElementById("modal_qualif").value =  lsGet[a].qualification;
   document.getElementById("modal_OQualif").value =  lsGet[a].other_Qual;
    document.getElementById("modal_yop").value =  lsGet[a].passout;
   
  // for technical skills
- console.log( lsGet[a].Techskil);
- 
-  // document.querySelectorAll(".modal_checkbox_false").checked=false;
-
+//  console.log( lsGet[a].Techskil);
   toArr=lsGet[a].Techskil.toString().split(",");
-//  console.log(toArr);
-//  console.log(typeof(toArr));
-// document.querySelector('input[mahi="gender"]:checked');
-// document.querySelectorAll("input[mahi="modal_checkbox_false"]").checked=false;
-
-
+  // to make all check boxes turn unchecked by default
   var inputs = document.getElementsByTagName('input');
-
   for (var i=0; i<inputs.length; i++)  {
     if (inputs[i].type == 'checkbox')   {
       inputs[i].checked = false;
     }
   }
-
+// to tick only user selected skill
   for (i = 0; i < toArr.length; i++) {
     let d = toArr[i].split(" ").join("_");
-     console.log(d);
-     
+    //  console.log(d);
     document.getElementById(d).checked=true;
     }
-
    document.getElementById("modal_Oskills").value =  lsGet[a].Other_skill;
    document.getElementById("modal_exp").value = lsGet[a].Exp;
    document.getElementById("modal_mail").value =  lsGet[a].Email;
    document.getElementById("modal_mobile").value =  lsGet[a].Mobile;
    document.getElementById("modal_resume").value =  lsGet[a].resume;
  }
-
-// // updating Functionality
-// function toUpdating() {
-//   console.log("update function working ");
-//   let lsforUpdate=JSON.parse(localStorage.getItem("form_details"));
-
-//   let modal_gender = document.querySelector('input[mahi="modal_gender"]:checked');
-
-
-//   let modal_techskill = [];
-//   let techSkills = document.getElementsByName("modal_techSkil");
-//   for (let i = 0; i < techSkills.length; i++) {
-//     if (techSkills[i].checked) {
-//       modal_techskill.push(techSkills[i].value);
-//     }
-//   }
-//   console.log(modal_techskill);
-//   let updateObj={
-//     f_Name: document.getElementById("modal_fname").value,
-//     l_Name: document.getElementById("modal_lname").value,
-//     gender: document.querySelector('input[mahi="modal_gender"]:checked').value,
-//     location: document.getElementById("modal_location").value,
-//     qualification:document.getElementById("modal_qualif").value,
-//     other_Qual:document.getElementById("modal_OQualif").value,
-//     passout:document.getElementById("modal_yop").value,
-//     Techskil:modal_techskill,
-//     Other_skill: document.getElementById("modal_Oskills").value,
-//     Exp:document.getElementById("modal_exp").value,
-//     Email:document.getElementById("modal_mail").value,
-//     Mobile: document.getElementById("modal_mobile").value,
-//     resume: document.getElementById("modal_resume").value,
-//   };
-//   console.log(lsforUpdate);
-// console.log("u clicked on ",row.rowIndex);
-//   lsforUpdate[row.rowIndex-1]=updateObj;
-//   console.log(lsforUpdate);
-//   // localStorage.setItem("form_details",JSON.stringify(lsforUpdate))
-//   // regis_data()
-
- 
-//   // let ls = JSON.parse(localStorage.getItem("form_details"));
-//   // ls[row.rowIndex - 1] = modalFormDetails;
-//   // localStorage.setItem("form_details", JSON.stringify(ls));
-  
-// }
-
+// delete functionality
 function toDel(forRowDel) {
   let ok = confirm("Are you sure to delete this row");
   if (ok == true) {
@@ -347,9 +237,7 @@ function toDel(forRowDel) {
 }
 
 
-
-
-
+// updating Functionality
 function toUpdating() {
   console.log("update function working ");
   let modal_gender = document.querySelector('input[mahi="modal_gender"]:checked');
@@ -363,9 +251,7 @@ function toUpdating() {
     }
   }
   console.log(modal_techskill);
-  let lsfor=JSON.parse(localStorage.getItem("form_details"));
-  
-
+   
   row.cells[0].innerHTML = document.getElementById("modal_fname").value;
   row.cells[1].innerHTML = document.getElementById("modal_lname").value;
   row.cells[2].innerHTML = modal_gender.value;
@@ -401,4 +287,77 @@ function toUpdating() {
   localStorage.setItem("form_details", JSON.stringify(ls));
   
 }
+// update functionality closed.
+
+
+
+// csv functionality
+let csvTbl=document.getElementById("csvTable");
+const x=document.getElementById("csvFile");
+x.addEventListener("change",()=>{
+  const fr= new FileReader();
+  fr.onloadend=e=>{
+
+    let r=fr.result.split("\n").map(e=>{
+      return e.split(",")
+    });
+    console.log(r);
+    console.log(fr.result.split("\n"));
+    r.forEach(elem => {
+      let m=elem.map(e=>{
+        return `<td>${e}</td>`;
+      }).join("");
+      // we should use join to to avoid commas in it.
+      console.log(m);
+      const ce= document.createElement("tr");
+     ce.innerHTML=m;
+      csvTbl.append(ce)
+    })
+    // console.log(r);
+  }
+  fr.readAsText(x.files[0]);
+})
+
+
+
+  // let headers=r2[0].split(",");
+    // console.log(headers);
+    // // let remainCsv=r2[1].split(",");
+    // // console.log(remainCsv);
+    // for(let i=0;i<headers.length;i++){
+    //   let tblHead=document.createElement('th');
+    //   tblHead.innerHTML=headers[i];
+    //   csvTbl.append(tblHead);
+    //   // console.log(r2[i].split(",")[i]);
+    //   for(let j=1;j<headers.length;j++){
+    //     let z=r2[j].split(",");
+    //     // console.log(z[i]);
+    //     let tblRow=document.createElement('tr')
+    //     // let tbldata=document.createElement('td')
+    //     tblRow.innerHTML=`<td>${z[i]}</td>`
+    //     csvTbl.append(tblRow);
+    //   }
+    // }
+
+    // // console.log(r2.length);
+    // for (let i=1;i<r2.length;i++){
+    //   let csvObj={};
+    //   let currentLine=r2[i].split(",");
+    //   for(let j=0;j<headers.length;j++){
+    //     csvObj[headers[j]]=currentLine[j];
+    //   }
+    //   csvArr.push(csvObj);
+    //   // console.log(csvObj);
+    // }
+    // localStorage.setItem("csvDetails",JSON.stringify(csvArr));
+    // let lscsvValues=JSON.parse(localStorage.getItem("csvDetails"));
+ 
+    // // end stackoverflow
+
+
+
+
+
+
+
 
