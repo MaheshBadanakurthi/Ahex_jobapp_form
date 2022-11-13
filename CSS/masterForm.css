@@ -172,8 +172,9 @@ footer{
     background-color: rgb(221, 87, 10);
     background-image: url("./footerbg.png");
     background-repeat: no-repeat;
-    background-position: fixed;
+    background-position:bottom;
     background-size:cover;
+    margin-bottom: 0px;
 }
 
 .footerIconfb{
@@ -230,4 +231,38 @@ footer{
     font-weight: 800;
     text-shadow: 2px 5px black;
 }
+
+.forFiles{
+    display: flex;
+    border: 2px ridge rgb(193, 185, 185);
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 3%;
+    border-radius: 20px;
+    column-gap: 5%;
+    margin-bottom: 4%;
+    
+}
+
+.csvSearch{
+    margin-left: 10%;
+}
+.csvSearch input{
+    border: 1px ridge rgb(164, 161, 161);
+    border-radius: 22px 5px 22px 5px;
+    font-size: 20px;
+    font-family: serif;
+    width: 260px;
+}
+.csvSearch button{
+    font-size: 20px;
+    font-family: serif;
+    height: auto;
+    width: 150px;
+}
+
+
+
+
+
 
