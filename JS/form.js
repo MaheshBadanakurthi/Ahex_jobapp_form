@@ -140,11 +140,11 @@ function regis_data() {
   }
 
 let lsRegis=localStorage.getItem("form_details")
-  let result = JSON.parse(lsRegis);
+  let lsresult = JSON.parse(lsRegis);
   // console.log(result[0].f_Name)
-  console.log(result);
+  console.log(lsresult);
 
-  for (let i = 0; i < result.length; i++) {
+  for (let i = 0; i < lsresult.length; i++) {
     let forRow = regTable.insertRow();
     let cell1 = forRow.insertCell();
     let cell2 = forRow.insertCell();
@@ -162,19 +162,19 @@ let lsRegis=localStorage.getItem("form_details")
     let cell14 = forRow.insertCell();
     let cell15 = forRow.insertCell();
 
-    cell1.innerHTML = result[i].f_Name;
-    cell2.innerHTML = result[i].l_Name;
-    cell3.innerHTML = result[i].gender;
-    cell4.innerHTML = result[i].location;
-    cell5.innerHTML = result[i].qualification;
-    cell6.innerHTML = result[i].other_Qual;
-    cell7.innerHTML = result[i].passout;
-    cell8.innerHTML = result[i].Techskil;
-    cell9.innerHTML = result[i].Other_skill;
-    cell10.innerHTML = result[i].Exp;
-    cell11.innerHTML = result[i].Email;
-    cell12.innerHTML = result[i].Mobile;
-    cell13.innerHTML = result[i].resume;
+    cell1.innerHTML = lsresult[i].f_Name;
+    cell2.innerHTML = lsresult[i].l_Name;
+    cell3.innerHTML = lsresult[i].gender;
+    cell4.innerHTML = lsresult[i].location;
+    cell5.innerHTML = lsresult[i].qualification;
+    cell6.innerHTML = lsresult[i].other_Qual;
+    cell7.innerHTML = lsresult[i].passout;
+    cell8.innerHTML = lsresult[i].Techskil;
+    cell9.innerHTML = lsresult[i].Other_skill;
+    cell10.innerHTML = lsresult[i].Exp;
+    cell11.innerHTML = lsresult[i].Email;
+    cell12.innerHTML = lsresult[i].Mobile;
+    cell13.innerHTML = lsresult[i].resume;
     cell14.innerHTML = `<button type="button" onclick= "editFun(this)" class="btn btn-success editbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i class="fa-solid fa-pen">  </i>  </button> <button type="button" class="btn btn-danger"> <i class="fa-solid fa-trash-can fontIcon deleting" onclick="toDel(this)"> </i></button> `;
   }
@@ -289,74 +289,210 @@ function toUpdating() {
 }
 // update functionality closed.
 
+// new csv functionality
+let csvFile=document.getElementById("inputCSV");
+// let csvTbl=document.getElementById("csvTable");
+
+csvFile.addEventListener('change',()=>{
+  let csvArr=[];
+  let csvFR=new FileReader();
+  // console.log(csvFR);
+    csvFR.onloadend=e=>{
+      // console.log("working");
+      let csvReader=csvFR.result.split("\n");
+      // console.log(csvReader);
+      let csvHeaders=csvReader[0].split(",");
+    //  console.log(csvHeaders);
+      for(let i=1;i<csvReader.length;i++){
+        let csvObj={};
+        let mb=csvReader[i].split(",")
+       for(let j=0;j<csvHeaders.length;j++){
+        csvObj[csvHeaders[j]]=mb[j]
+       }
+       csvArr.push(csvObj);
+       
+      }
+      // console.log(csvArr);
+      localStorage.setItem("csv_details",JSON.stringify(csvArr));
+
+      //checking CSV table start
+
+      console.log("mahesh working");
+      let csvTbl=document.getElementById("csvTable");
+    
+    let lsCSV_values=JSON.parse(localStorage.getItem("csv_details"));
+        // console.log(lsCSV_values);
+    let lsKeys=Object.keys(lsCSV_values[0]);
+    //for taking headers form object, to set heading in table.
+        // console.log(lsKeys.length);
+
+        // seaarch bar for CSV
+    let forSearch=` <div class="d-flex csvSearch">
+    <input class="form-control me-2" type="search" placeholder="Search here" aria-label="Search" onkeyup="searching()" id="searchBar">
+      
+    </div>`;
+    
+    let csvheaderTr=`<tr>`;
+    for(let i=0;i<lsKeys.length;i++){
+      // for table values 
+      csvheaderTr+=`<th>`+ lsKeys[i]+`</th>`
+      // console.log(csvheaderTr);
+    }
+    csvheaderTr+=`</tr>`;
+    
+        let toTableRow='';
+          // let csvReader=csvFR.result;
+          for(let i=0;i<lsCSV_values.length;i++){
+            //taking local storage length bcoz we want only number of row ls contains.
+           toTableRow += `<tr>`;
+          for(let j=0;j<lsKeys.length;j++){
+            // taking header length  bcoz below values have same length
+            let toAccess_csvValues=lsKeys[j];
+            toTableRow+=`<td>`+lsCSV_values[i][toAccess_csvValues]+`</td>`;
+            // lsCSV_values[0][f_name] nxt  lsCSV_values[0][l_name] nxt lsCSV_values[0][gender] continue like this.
+            // lsCSV_values[1][f_name] nxt  lsCSV_values[1][l_name] nxt lsCSV_values[1][gender] continue like this.
+          }
+          toTableRow+=`</tr>`;
+
+        }
+        document.getElementById("forSearchbar").innerHTML=forSearch;
+        csvTbl.innerHTML=csvheaderTr+toTableRow;
+       
+      // checking end
+    }
+csvFR.readAsText(csvFile.files[0]);
+ });
 
 
-// csv functionality
-let csvTbl=document.getElementById("csvTable");
-const x=document.getElementById("csvFile");
-x.addEventListener("change",()=>{
-  const fr= new FileReader();
-  fr.onloadend=e=>{
 
-    let r=fr.result.split("\n").map(e=>{
-      return e.split(",")
-    });
-    console.log(r);
-    console.log(fr.result.split("\n"));
-    r.forEach(elem => {
-      let m=elem.map(e=>{
-        return `<td>${e}</td>`;
-      }).join("");
-      // we should use join to to avoid commas in it.
-      console.log(m);
-      const ce= document.createElement("tr");
-     ce.innerHTML=m;
-      csvTbl.append(ce)
-    })
-    // console.log(r);
-  }
-  fr.readAsText(x.files[0]);
+// csv functionality working do not delete
+
+// let csvTbl=document.getElementById("csvTable");
+// const x=document.getElementById("inputCSV");
+// x.addEventListener("change",()=>{
+//   const fr= new FileReader();
+//   fr.onloadend=e=>{
+
+//     let r=fr.result.split("\n").map(e=>{
+//       return e.split(",")
+//     });
+//     console.log(r);
+//     console.log(fr.result.split("\n"));
+//     r.forEach(elem => {
+//       let m=elem.map(e=>{
+//         return `<td>${e}</td>`;
+//       }).join("");
+//       // we should use join to to avoid commas in it.
+//       console.log(m);
+//       const ce= document.createElement("tr");
+//      ce.innerHTML=m;
+//       csvTbl.append(ce)
+//     })
+//     // console.log(r);
+//   }
+//   fr.readAsText(x.files[0]);
+// })
+
+
+
+
+
+// starting of XLS file reader
+let selectedFile;
+
+document.getElementById("inputXLS").addEventListener("change",(event)=>{
+   selectedFile=event.target.files[0];
+   console.log(selectedFile);
 })
 
+document.getElementById("xlsButton").addEventListener("click",()=>{
+  let xlsFileReader=new FileReader();
+  xlsFileReader.readAsBinaryString(selectedFile);
+  xlsFileReader.onload=(event)=>{
+    // console.log(event.target.result);
+    let xlsData=event.target.result;
+    let xlsWork=XLSX.read(xlsData,{type:"binary"})
+    console.log(xlsWork);
+    xlsWork.SheetNames.forEach(sheet => {
+let rowObject=XLSX.utils.sheet_to_row_object_array(xlsWork.Sheets[sheet]) ;
+
+console.log(rowObject);
+localStorage.setItem('xls_details',JSON.stringify(rowObject))
+    });
+    let xslLs=JSON.parse(localStorage.getItem("xls_details"))
+console.log(xslLs);
+let xlsHeader=Object.keys(xslLs[0]);
+console.log(xlsHeader);
+let headerTr=`<tr>`;
+for(let i=0;i<xlsHeader.length;i++){
+  headerTr+=`<th>`+ xlsHeader[i]+`</th>`
+}
+headerTr+=`</tr>`;
+
+let xls_remaining_data='';
+for(let i=0;i<xslLs.length;i++){
+  xls_remaining_data+=`<tr>`;
+  for(let j=0;j<xlsHeader.length;j++){
+    let access_value=xlsHeader[j];
+    xls_remaining_data+=`<td>`+xslLs[i][access_value]+`</td>`;
+  }
+  xls_remaining_data+=`</tr>`;
+
+}
+let xlsTbl=document.getElementById("xlsTable");
+xlsTbl.innerHTML=headerTr + xls_remaining_data;
+
+  }
+
+})
+
+const searching= ()=>{
+  let  searchTable=document.getElementById("csvTable");
+  let searchNames=document.getElementById("searchBar").value.toUpperCase();
+  // console.log("U clicked",this.value,searchTable,searchNames);
+let tblrow=searchTable.getElementsByTagName("tr")
+console.log(tblrow);
+for(let i=0;i<tblrow.length;i++){
+
+  let tableData=tblrow[i].getElementsByTagName("td")[0];
+  if(tableData){
+    let tdText=tableData.textContent || tableData.innerHTML;
+    // console.log(tdText);
+    if(tdText.toUpperCase().indexOf(searchNames) > -1){
+      tblrow[i].style.display="";
+    }
+    else
+    tblrow[i].style.display='none';
+  }
+}
+
+}
 
 
-  // let headers=r2[0].split(",");
-    // console.log(headers);
-    // // let remainCsv=r2[1].split(",");
-    // // console.log(remainCsv);
-    // for(let i=0;i<headers.length;i++){
-    //   let tblHead=document.createElement('th');
-    //   tblHead.innerHTML=headers[i];
-    //   csvTbl.append(tblHead);
-    //   // console.log(r2[i].split(",")[i]);
-    //   for(let j=1;j<headers.length;j++){
-    //     let z=r2[j].split(",");
-    //     // console.log(z[i]);
-    //     let tblRow=document.createElement('tr')
-    //     // let tbldata=document.createElement('td')
-    //     tblRow.innerHTML=`<td>${z[i]}</td>`
-    //     csvTbl.append(tblRow);
-    //   }
-    // }
 
-    // // console.log(r2.length);
-    // for (let i=1;i<r2.length;i++){
-    //   let csvObj={};
-    //   let currentLine=r2[i].split(",");
-    //   for(let j=0;j<headers.length;j++){
-    //     csvObj[headers[j]]=currentLine[j];
-    //   }
-    //   csvArr.push(csvObj);
-    //   // console.log(csvObj);
-    // }
-    // localStorage.setItem("csvDetails",JSON.stringify(csvArr));
-    // let lscsvValues=JSON.parse(localStorage.getItem("csvDetails"));
- 
-    // // end stackoverflow
-
-
-
-
+// const searching= ()=>{
+//   let  searchTable=document.getElementById("csvTable");
+//   let searchNames=document.getElementById("searchBar").value.toUpperCase();
+//   // console.log("U clicked",this.value,searchTable,searchNames);
+// let tblrow=searchTable.getElementsByTagName("tr")
+// console.log(tblrow);
+// let tdCount=searchTable.getElementsByTagName("td");
+// console.log(tdCount);
+// for(let i=0;i<tblrow.length;i++){
+//   for(let j=0;j<tdCount.length;j++){
+//     let randData=searchTable.getElementsByTagName('td')[j];
+//     // console.log(randData);
+//     if(randData){
+//       let tableDataText=randData.textContent || randData.innerHTML
+//       if(tableDataText.toUpperCase().indexOf(searchNames) > -1){
+//         tblrow[i].style.display="";
+//       }
+//       else
+//       tblrow[i].style.display="none";
+//     }
+//   }
+// }
+// }
 
 
 
