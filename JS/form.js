@@ -142,7 +142,7 @@ function regis_data() {
 let lsRegis=localStorage.getItem("form_details")
   let lsresult = JSON.parse(lsRegis);
   // console.log(result[0].f_Name)
-  console.log(lsresult);
+  // console.log(lsresult);
 
   for (let i = 0; i < lsresult.length; i++) {
     let forRow = regTable.insertRow();
@@ -184,7 +184,13 @@ let row;
  function editFun(td) {
    console.log("edit function is working");
    row = td.parentNode.parentNode;
-//  console.log(row.rowIndex);
+  //  console.log(td); // button tag
+  //  console.log(td.parentNode);// td tag
+  //  console.log(row);//tr tag
+  //  console.log(row.parentNode);// thead tag
+
+
+   //  console.log(row.rowIndex);
  let lsGet=JSON.parse(localStorage.getItem("form_details"))
  let a=row.rowIndex-1;
    document.getElementById("modal_fname").value = lsGet[a].f_Name;
@@ -225,6 +231,7 @@ let row;
 function toDel(forRowDel) {
   let ok = confirm("Are you sure to delete this row");
   if (ok == true) {
+    // closest matches a specified  selector in document.
     var userIndex = forRowDel.closest('tr').rowIndex;
     document.getElementById("userTable").deleteRow(userIndex);
    
@@ -289,6 +296,7 @@ function toUpdating() {
 }
 // update functionality closed.
 
+
 // new csv functionality
 let csvFile=document.getElementById("inputCSV");
 // let csvTbl=document.getElementById("csvTable");
@@ -329,7 +337,8 @@ csvFile.addEventListener('change',()=>{
         // seaarch bar for CSV
     let forSearch=` <div class="d-flex csvSearch">
     <input class="form-control me-2" type="search" placeholder="Search here" aria-label="Search" onkeyup="searching()" id="searchBar">
-      
+    <label for="cars">Sort by:</label>
+  <button class="btn btn-primary" onclick="sorting()">Name</button> 
     </div>`;
     
     let csvheaderTr=`<tr>`;
@@ -494,6 +503,202 @@ for(let i=0;i<tblrow.length;i++){
 // }
 // }
 
+//---------------->
+// sorting functionality started
+function sorting(){
+let x;
+let y;
+let i;
+let shouldSwitch;
+  let sortTable=document.getElementById("csvTable");
+ let switching=true;
+  while(switching){
+  let  switching=false;
+  let  rows=sortTable.rows;
+  let rLen=rows.length;
+    for(let i=1;i<rLen-1;i++){
+      shouldSwitch=false;
+      x=rows[i].getElementsByTagName('TD')[0];
+      y=rows[i+1].getElementsByTagName('TD')[0];
+      // console.log(x.innerHTML);
+      // console.log(y.innerHTML);
+      if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+        shouldSwitch=true;
+        break;
+      }
+    }
+    if(shouldSwitch){
+      rows[i].parentNode.insertBefore(rows[i+1],rows[i]);
+      switching=true
+    }
+  }
+
+}
+// sorted end
+//--------------->
 
 
+// pagiantion Started
 
+let products=[
+  {
+    "id":"1",
+    "title":"Watch",
+    "price":500,
+    "rating":"4/5"
+  },
+  {
+    "id":"2",
+    "title":"Sun Glasses",
+    "price":1500,
+    "rating":"4.5/5"
+  },{
+    "id":"3",
+    "title":"Rol-hex",
+    "price":2500,
+    "rating":"3.8/5"
+  },{
+    "id":"4",
+    "title":"Chain",
+    "price":700,
+    "rating":"3/5"
+  },{
+    "id":"5",
+    "title":"Ring",
+    "price":4500,
+    "rating":"4.1/5"
+  },{
+    "id":"6",
+    "title":"Ear Ring",
+    "price":900,
+    "rating":"3.5/5"
+  },{
+    "id":"7",
+    "title":"Key_Styler",
+    "price":1500,
+    "rating":"4.5/5"
+  },{
+    "id":"8",
+    "title":"M-Shoe",
+    "price":11500,
+    "rating":"4.7/5"
+  },{
+    "id":"9",
+    "title":"R-Shoe",
+    "price":800,
+    "rating":"3.2/5"
+  },{
+    "id":"10",
+    "title":"Wrist_One",
+    "price":800,
+    "rating":"3.2/5"
+  }
+];
+let pageNo=1;
+let prodEle=document.querySelector('.products');//table
+let previous=document.querySelector('.previous'); // prev button
+let next=document.querySelector('.next'); //next button
+let pages= document.querySelectorAll('.pages');  // page numbers
+
+populateTable();
+function populateTable(){
+  let table= `<thead>
+        <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>price</th> 
+          <th>rating</th>
+          </tr> <thead> 
+          <tbody> `;//table body for next rows.
+  let row;
+  prodEle.innerHTML=""; // default making table empty
+  let start=(pageNo-1)*3;// We want 0,1,2 index values on page no.1. 
+  // (1-1)*3=0--> for 2nd page 2-1*3=3 .....etc
+  let end=start+3;
+  // 0+3=3-->for 2nd page 3+3=6...etc
+  for(i=start;i<end;i++){
+    row = `<tr>  <td>${products[i].id}</td>
+    <td>${products[i].title}</td>    
+    <td>${products[i].price}</td>
+    <td>${products[i].rating}</td>
+   </tr> `
+   table=table+row;
+  }
+  table+="</tbody>";
+  prodEle.innerHTML=table;
+}
+
+for(p of pages){
+  p.onclick= function (){
+    console.log("page onclick Function working");
+
+    for(page of pages){
+      page.classList.remove('active')
+    }
+    this.classList.add('active');
+    pageNo=parseInt(this.innerText);
+    console.log(pageNo);
+    populateTable();
+    if(pageNo==3){
+      next.classList.add('disabled')
+    }
+    else {
+      next.classList.remove('disabled')
+    }
+    if(pageNo==1){
+      previous.classList.add('disabled')
+    }
+    else
+    previous.classList.remove('disabled' )
+
+  }
+}
+next.onclick=function(){
+  console.log("next Function working");
+  if(pageNo<3){
+    pageNo+=1;
+    populateTable();
+    updateActivepage();
+  }
+    if(pageNo==3){
+      this.classList.add('disabled')
+    }
+    if(pageNo>1){
+      previous.classList.remove('disabled')
+    }
+  
+}
+
+previous.onclick=function(){
+  console.log("previous Function working");
+
+  if(pageNo>1){
+    pageNo-=1;
+    console.log("previous Function working");
+
+    populateTable();
+    updateActivepage();
+  }  
+  if(pageNo==1){
+    this.classList.add('disabled')
+  }
+  if(pageNo<3){
+    next.classList.remove('disabled')
+  }
+}
+
+
+function updateActivepage(){
+  console.log("update Active page working");
+
+  for(p of pages){
+    if(p.innerText==pageNo){
+      p.classList.add('active');
+    }
+    else
+    p.classList.remove('active');
+  }
+}
+
+// pagination end
+//--------------------->
