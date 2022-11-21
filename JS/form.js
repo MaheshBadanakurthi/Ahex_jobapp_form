@@ -184,11 +184,6 @@ let row;
  function editFun(td) {
    console.log("edit function is working");
    row = td.parentNode.parentNode;
-  //  console.log(td); // button tag
-  //  console.log(td.parentNode);// td tag
-  //  console.log(row);//tr tag
-  //  console.log(row.parentNode);// thead tag
-
 
    //  console.log(row.rowIndex);
  let lsGet=JSON.parse(localStorage.getItem("form_details"))
@@ -333,13 +328,6 @@ csvFile.addEventListener('change',()=>{
     let lsKeys=Object.keys(lsCSV_values[0]);
     //for taking headers form object, to set heading in table.
         // console.log(lsKeys.length);
-
-        // seaarch bar for CSV
-    let forSearch=` <div class="d-flex csvSearch">
-    <input class="form-control me-2" type="search" placeholder="Search here" aria-label="Search" onkeyup="searching()" id="searchBar">
-    <label for="cars">Sort by:</label>
-  <button class="btn btn-primary" onclick="sorting()">Name</button> 
-    </div>`;
     
     let csvheaderTr=`<tr>`;
     for(let i=0;i<lsKeys.length;i++){
@@ -348,7 +336,8 @@ csvFile.addEventListener('change',()=>{
       // console.log(csvheaderTr);
     }
     csvheaderTr+=`</tr>`;
-    
+    document.getElementById("csvthead").innerHTML=csvheaderTr;
+
         let toTableRow='';
           // let csvReader=csvFR.result;
           for(let i=0;i<lsCSV_values.length;i++){
@@ -364,13 +353,17 @@ csvFile.addEventListener('change',()=>{
           toTableRow+=`</tr>`;
 
         }
-        document.getElementById("forSearchbar").innerHTML=forSearch;
-        csvTbl.innerHTML=csvheaderTr+toTableRow;
-       
-      // checking end
+        // document.getElementById("forSearchbar").innerHTML=forSearch;
+        document.getElementById("csvtbody").innerHTML=toTableRow;
+        $(document).ready(function(){
+          $('#csvTable').DataTable();
+        })
+
     }
 csvFR.readAsText(csvFile.files[0]);
+
  });
+ 
 
 
 
@@ -420,7 +413,7 @@ document.getElementById("xlsButton").addEventListener("click",()=>{
   xlsFileReader.onload=(event)=>{
     // console.log(event.target.result);
     let xlsData=event.target.result;
-    let xlsWork=XLSX.read(xlsData,{type:"binary"})
+    let xlsWork=XLSX.read(xlsData,{type:"binary"});
     console.log(xlsWork);
     xlsWork.SheetNames.forEach(sheet => {
 let rowObject=XLSX.utils.sheet_to_row_object_array(xlsWork.Sheets[sheet]) ;
@@ -437,6 +430,7 @@ for(let i=0;i<xlsHeader.length;i++){
   headerTr+=`<th>`+ xlsHeader[i]+`</th>`
 }
 headerTr+=`</tr>`;
+document.getElementById("xlsthead").innerHTML=headerTr;
 
 let xls_remaining_data='';
 for(let i=0;i<xslLs.length;i++){
@@ -446,14 +440,17 @@ for(let i=0;i<xslLs.length;i++){
     xls_remaining_data+=`<td>`+xslLs[i][access_value]+`</td>`;
   }
   xls_remaining_data+=`</tr>`;
-
+  document.getElementById("xlstbody").innerHTML=xls_remaining_data;
 }
-let xlsTbl=document.getElementById("xlsTable");
-xlsTbl.innerHTML=headerTr + xls_remaining_data;
+$(document).ready(function (){
+  $("#xlsTable").DataTable();
+})
 
   }
 
+ 
 })
+
 
 const searching= ()=>{
   let  searchTable=document.getElementById("csvTable");
@@ -478,64 +475,56 @@ for(let i=0;i<tblrow.length;i++){
 }
 
 
-
-// const searching= ()=>{
-//   let  searchTable=document.getElementById("csvTable");
-//   let searchNames=document.getElementById("searchBar").value.toUpperCase();
-//   // console.log("U clicked",this.value,searchTable,searchNames);
-// let tblrow=searchTable.getElementsByTagName("tr")
-// console.log(tblrow);
-// let tdCount=searchTable.getElementsByTagName("td");
-// console.log(tdCount);
-// for(let i=0;i<tblrow.length;i++){
-//   for(let j=0;j<tdCount.length;j++){
-//     let randData=searchTable.getElementsByTagName('td')[j];
-//     // console.log(randData);
-//     if(randData){
-//       let tableDataText=randData.textContent || randData.innerHTML
-//       if(tableDataText.toUpperCase().indexOf(searchNames) > -1){
-//         tblrow[i].style.display="";
-//       }
-//       else
-//       tblrow[i].style.display="none";
-//     }
-//   }
-// }
-// }
-
-//---------------->
-// sorting functionality started
-function sorting(){
-let x;
-let y;
-let i;
-let shouldSwitch;
+// ----------> sorting 
+function asnsorting(){
   let sortTable=document.getElementById("csvTable");
- let switching=true;
-  while(switching){
-  let  switching=false;
-  let  rows=sortTable.rows;
-  let rLen=rows.length;
-    for(let i=1;i<rLen-1;i++){
-      shouldSwitch=false;
-      x=rows[i].getElementsByTagName('TD')[0];
-      y=rows[i+1].getElementsByTagName('TD')[0];
-      // console.log(x.innerHTML);
-      // console.log(y.innerHTML);
-      if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
-        shouldSwitch=true;
-        break;
-      }
-    }
-    if(shouldSwitch){
-      rows[i].parentNode.insertBefore(rows[i+1],rows[i]);
-      switching=true
-    }
+  console.log(sortTable);
+  let a=sortTable.getElementsByTagName("tr");
+  let Rows=sortTable.rows;
+
+// let switching=true;
+// let shouldSwitch;
+let RowCount=1;
+while(RowCount<Rows.length-1){
+// switching=false;
+  for(let i=1;i<Rows.length-1 ;i++){
+    let x=a[i].getElementsByTagName("td")[0].innerText;
+    let y=a[i+1].getElementsByTagName("td")[0].innerText;
+
+  
+  if(x.toLowerCase() > y.toLowerCase()){
+    Rows[i].parentNode.insertBefore(Rows[i+1],Rows[i]);
+    
   }
+  }
+  RowCount+=1;
+}
+  
+  // let x=a[1].getElementsByTagName("td")[0].innerText;
+  // console.log(sortTable.rows);
+  // console.log(sortTable.rows.length);
+// let y=a[2].getElementsByTagName("td")[0].innerText;
+// console.log(x.toLowerCase());
+// console.log(y.toLowerCase());
+// console.log(Rows[2].parentNode);
+// console.log(x.innerText.toLowerCase());
+// console.log(x.toLowerCase()>y.toLowerCase());
+// if(x.toLowerCase() > y.toLowerCase()){
+//   Rows[1].parentNode.insertBefore(Rows[2],Rows[1]);
+
+// }
+// let x2=a[2].getElementsByTagName("td")[0].innerText;
+// let y2=a[3].getElementsByTagName("td")[0].innerText;
+// console.log(x2.toLowerCase());
+// console.log(y2.toLowerCase());
+// if(x2.toLowerCase() > y2.toLowerCase()){
+//   Rows[2].parentNode.insertBefore(Rows[3],Rows[2])
+// }
 
 }
-// sorted end
-//--------------->
+
+
+
 
 
 // pagiantion Started
@@ -592,54 +581,81 @@ let products=[
     "title":"Wrist_One",
     "price":800,
     "rating":"3.2/5"
+  },{
+    "id":"11",
+    "title":"R-Shoe",
+    "price":800,
+    "rating":"3.2/5"
   }
 ];
+// console.log(typeof(products))
 let pageNo=1;
 let prodEle=document.querySelector('.products');//table
 let previous=document.querySelector('.previous'); // prev button
 let next=document.querySelector('.next'); //next button
 let pages= document.querySelectorAll('.pages');  // page numbers
+let userValue=document.getElementById("userValue")
+// console.log(userValue.value);
 
 populateTable();
-function populateTable(){
-  let table= `<thead>
-        <tr>
-          <th>id</th>
-          <th>title</th>
-          <th>price</th> 
-          <th>rating</th>
-          </tr> <thead> 
-          <tbody> `;//table body for next rows.
+function userValueFun(){
+  console.log("on change value");
+  console.log(userValue.value);
+  populateTable();
+}
+
+function populateTable(pageno=1){
+  // sending a default param to function
+  // console.log(Object.keys(products[0]))
+  let proHeadLen=Object.keys(products[0])
+
+  let table=`<tr>`
+for(i=0;i<proHeadLen.length;i++){
+  table+=`<th>${proHeadLen[i]}</th>`
+
+}
   let row;
+  let end;
   prodEle.innerHTML=""; // default making table empty
-  let start=(pageNo-1)*3;// We want 0,1,2 index values on page no.1. 
-  // (1-1)*3=0--> for 2nd page 2-1*3=3 .....etc
-  let end=start+3;
-  // 0+3=3-->for 2nd page 3+3=6...etc
-  for(i=start;i<end;i++){
-    row = `<tr>  <td>${products[i].id}</td>
-    <td>${products[i].title}</td>    
-    <td>${products[i].price}</td>
-    <td>${products[i].rating}</td>
-   </tr> `
-   table=table+row;
+  let start=(pageNo-1)*userValue.value;// We want 0,1,2 index values on page no.1. 
+  if(pages.length==pageno){
+    console.log(pages.length);
+    //here pages is no.of pages.
+    end=products.length;
   }
-  table+="</tbody>";
+  else{
+     end=start+parseInt(userValue.value);
+    // if end=products.length;
+  }
+  for(i=start;i<end;i++){
+    if(products.length>i){
+      row = `<tr>  <td>${products[i].id}</td>
+         <td>${products[i].title}</td>    
+         <td>${products[i].price}</td>
+         <td>${products[i].rating}</td>
+       </tr> `
+   table=table+row;
+    }
+    else{
+      return false;
+    }
+    
+  };
   prodEle.innerHTML=table;
 }
 
 for(p of pages){
-  p.onclick= function (){
+  p.onclick= function (e){
+    e.preventDefault()
     console.log("page onclick Function working");
-
-    for(page of pages){
-      page.classList.remove('active')
+    for(p of pages){
+      p.classList.remove('active')
     }
     this.classList.add('active');
     pageNo=parseInt(this.innerText);
     console.log(pageNo);
-    populateTable();
-    if(pageNo==3){
+    populateTable(pageNo);
+    if(pageNo==4){
       next.classList.add('disabled')
     }
     else {
@@ -653,14 +669,16 @@ for(p of pages){
 
   }
 }
-next.onclick=function(){
+
+next.onclick=function(e){
+  e.preventDefault();
   console.log("next Function working");
-  if(pageNo<3){
-    pageNo+=1;
+  if(pageNo<4){
+    pageNo += 1;
     populateTable();
     updateActivepage();
   }
-    if(pageNo==3){
+    if(pageNo==4){
       this.classList.add('disabled')
     }
     if(pageNo>1){
@@ -669,7 +687,8 @@ next.onclick=function(){
   
 }
 
-previous.onclick=function(){
+previous.onclick=function(e){
+  e.preventDefault();
   console.log("previous Function working");
 
   if(pageNo>1){
@@ -682,7 +701,7 @@ previous.onclick=function(){
   if(pageNo==1){
     this.classList.add('disabled')
   }
-  if(pageNo<3){
+  if(pageNo<4){
     next.classList.remove('disabled')
   }
 }
@@ -702,3 +721,12 @@ function updateActivepage(){
 
 // pagination end
 //--------------------->
+
+
+
+
+
+
+
+
+
