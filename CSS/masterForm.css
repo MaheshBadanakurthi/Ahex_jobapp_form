@@ -136,6 +136,14 @@ td{
     font-family: 'Times New Roman', Times, serif;
 }
 
+tbody tr:nth-child(even){
+    color: black;
+    font-size: 30px;
+    width:auto;
+    color: rgb(2, 2, 2);
+    background-color: rgb(246, 241, 195);
+}
+/* below code for regis table style */
 tr:nth-child(even){
     color: black;
     font-size: 30px;
@@ -144,6 +152,14 @@ tr:nth-child(even){
     background-color: rgb(246, 241, 195);
 }
 tr:nth-child(odd){
+    color: black;
+    font-size: 30px;
+    width:auto;
+    background-color: white;
+}
+/* regis style end */
+
+tbody tr:nth-child(odd){
     color: black;
     font-size: 30px;
     width:auto;
@@ -261,7 +277,11 @@ footer{
     width: 150px;
 }
 
-
+.btn-sm{
+    border-radius: 2%;
+    background-color: black;
+    color: white;
+}
 
 
 
